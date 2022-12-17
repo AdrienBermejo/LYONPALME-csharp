@@ -26,7 +26,7 @@ namespace CreditSio.Models
         /// Retourne l'id du compte.
         /// </summary>
         /// <returns></returns>
-        public int getId()
+        public int GetId()
         {
             return Id;
         }
@@ -35,7 +35,7 @@ namespace CreditSio.Models
         /// Obtenir le solde du compte.
         /// </summary>
         /// <returns>Solde (propriété de la classe CompteCourant)</returns>
-        public double getSolde()
+        public double GetSolde()
         {
             return Solde;
         }
