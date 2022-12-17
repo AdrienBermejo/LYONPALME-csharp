@@ -14,9 +14,9 @@ using CreditSio.Models;
 
 namespace CreditSio
 {
-    public partial class FTests : Form
+    public partial class FTestsClients : Form
     {
-        public FTests()
+        public FTestsClients()
         {
             InitializeComponent();
         }

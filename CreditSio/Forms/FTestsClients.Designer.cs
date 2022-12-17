@@ -1,7 +1,7 @@
 ﻿
 namespace CreditSio
 {
-    partial class FTests
+    partial class FTestsClients
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

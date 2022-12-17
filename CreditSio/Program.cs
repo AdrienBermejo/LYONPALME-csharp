@@ -16,7 +16,7 @@ namespace CreditSio
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FTests());
+            Application.Run(new FTestsClients());
         }
     }
 }
