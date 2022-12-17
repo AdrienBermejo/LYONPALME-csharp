@@ -9,7 +9,7 @@ namespace CreditSio.Models
     /// <summary>
     /// Auteur : B. Chataing.
     /// Date de création : 8/12/2022.
-    /// Date de modification :
+    /// Date de modification : 17/12/2022.
     /// Modélise un compte courant.
     /// </summary>
     public class CompteCourantModel : CompteModel
