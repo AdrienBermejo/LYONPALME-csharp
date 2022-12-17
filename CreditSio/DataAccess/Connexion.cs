@@ -35,7 +35,7 @@ namespace CreditSio.DataAccess
         /// Connexion à SQL Server.
         /// </summary>
         /// <returns>Un SqlConnection non null si connexion réussie.</returns>
-        public SqlConnection getConnection()
+        public SqlConnection GetConnection()
         {
             string connectionString;
             try

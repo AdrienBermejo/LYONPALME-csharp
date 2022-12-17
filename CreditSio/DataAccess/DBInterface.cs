@@ -14,7 +14,7 @@ namespace CreditSio.DataAccess
     /// </summary>
     public class DBInterface
     {
-        public static List<ClientModel>getAllClients(int idConseiller)
+        public static List<ClientModel>GetAllClients(int idConseiller)
         {
             List<ClientModel> clients = new List<ClientModel>();
             SqlConnection connection = null; ;
