@@ -21,7 +21,7 @@ namespace CreditSio.DataAccess
             SqlDataReader sqlDataReader = null;
             try
             {
-                connection = Connection.getInstance().getConnection();
+                connection = Connection.getInstance().GetConnection();
                 SqlCommand sqlCommand = new SqlCommand("spClient_GetByConseiller", connection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 sqlCommand.Parameters.AddWithValue("@pIdConseiller", SqlDbType.Int).Value = idConseiller;
