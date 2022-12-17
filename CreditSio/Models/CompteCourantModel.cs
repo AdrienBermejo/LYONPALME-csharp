@@ -12,12 +12,33 @@ namespace CreditSio.Models
     /// Date de modification :
     /// Modélise un compte courant.
     /// </summary>
-    public class  CompteCourantModel:CompteModel
+    public class CompteCourantModel : CompteModel
     {
+        #region propriétés
         /// <summary>
         /// Decouvert autorisé.
         /// </summary>
-        public string Decouvert { get; set; }
+        public double Decouvert { get; set; }
+        #endregion
 
+        #region méthodes
+        /// <summary>
+        /// Retourne l'id du compte.
+        /// </summary>
+        /// <returns></returns>
+        public int getId()
+        {
+            return Id;
+        }
+
+        /// <summary>
+        /// Obtenir le solde du compte.
+        /// </summary>
+        /// <returns>Solde (propriété de la classe CompteCourant)</returns>
+        public double getSolde()
+        {
+            return Solde;
+        }
+        #endregion
     }
 }
