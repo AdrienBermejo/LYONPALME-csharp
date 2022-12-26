@@ -37,9 +37,10 @@ namespace CreditSio.DataAccess
                     clients.Add(clientModel);
                 }
             }
-            catch(SqlException)
+            catch(InvalidOperationException)
             {
-                throw;
+                Console.WriteLine("Une erreur SQL est survenue");
+
             }
             finally
             {

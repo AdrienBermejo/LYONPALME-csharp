@@ -19,7 +19,7 @@ namespace CreditSio.DataAccess
         /// <summary>
         /// Instance SqlConnection : persiste la connexion au serveur.
         /// </summary>
-        private static SqlConnection sqlConnection;
+        private static SqlConnection sqlConnection = null;
 
         /// <summary>
         /// Singleton : instance unique de la classe Connexion.
@@ -43,12 +43,13 @@ namespace CreditSio.DataAccess
                 connectionString = ConfigurationManager.ConnectionStrings["sqlserver_creditsio"].ConnectionString;
                 sqlConnection = new SqlConnection(connectionString);
                 sqlConnection.Open();
-                return sqlConnection;
+                
             }
             catch(SqlException)
             {
-                throw;
+                Console.WriteLine("Erreur connexion au serveur");
             }
+            return sqlConnection;
         }
 
         /// <summary>

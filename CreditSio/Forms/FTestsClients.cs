@@ -26,6 +26,7 @@ namespace CreditSio
             //On choisit arbitrairement le conseiller financier avec l'id 2
             int id = 2;
             //On récupère tous les clients de ce conseiller financier
+
             List<ClientModel> clients = DBInterface.GetAllClients(id);
             //On teste que la liste ne soit pas vide
             if (clients != null)
@@ -40,6 +41,7 @@ namespace CreditSio
                     lvClients.Items.Add(listViewItem);
                 }
             }
+            
         }
     }
 }
