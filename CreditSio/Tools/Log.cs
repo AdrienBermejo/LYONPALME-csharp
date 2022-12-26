@@ -29,6 +29,10 @@ namespace CreditSio.Tools
             w.WriteLine("-------------------------------");
         }
 
+        /// <summary>
+        /// Parcours le fichier log passé en paramètre et affiche son contenu.
+        /// </summary>
+        /// <param name="r">Le fichier à lire.</param>
         public static void DumpLog(System.IO.StreamReader r)
         {
             string line;
