@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using CreditSio.Models;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+using CreditSio.Tools;
 
 namespace CreditSio.DataAccess
 {
@@ -39,7 +41,10 @@ namespace CreditSio.DataAccess
             }
             catch(InvalidOperationException)
             {
-                Console.WriteLine("Une erreur SQL est survenue");
+                using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                {
+                    Log.WriteLog("DBInterface : erreur SQL", w);
+                }
 
             }
             finally

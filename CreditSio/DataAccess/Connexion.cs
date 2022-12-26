@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.IO;
+using CreditSio.Tools;
 
 namespace CreditSio.DataAccess
 {
@@ -47,7 +49,10 @@ namespace CreditSio.DataAccess
             }
             catch(SqlException)
             {
-                Console.WriteLine("Erreur connexion au serveur");
+                using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                {
+                    Log.WriteLog("Connection : erreur de connexion au serveur", w);
+                }
             }
             return sqlConnection;
         }
