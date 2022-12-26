@@ -11,7 +11,7 @@ namespace CreditSio.DataAccess
     /// <summary>
     /// Auteur : B. Chataing.
     /// Date de création : 8/12/2022.
-    /// Date de modification : 17/12/2022.
+    /// Date de modification : 26/12/2022.
     /// Gère la connexion à la base de données, par un singleton (une seule instance d'une classe).
     /// </summary>
     public class Connection
