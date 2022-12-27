@@ -21,14 +21,14 @@ namespace CreditSio
             InitializeComponent();
         }
 
-        private void FTests_Load(object sender, EventArgs e)
+        private void FTestsClients_Load(object sender, EventArgs e)
         {
             //On choisit arbitrairement le conseiller financier avec l'id 2
             int id = 2;
             //On récupère tous les clients de ce conseiller financier
 
             List<ClientModel> clients = DBInterface.GetAllClients(id);
-            //On teste que la liste ne soit pas vide
+            //On teste que la liste ne soit pas vide. Si elle est vide, c'est qu'il y a eu une erreur...
             if (clients != null)
             {
                 //On parcourt la liste de ClientModel
