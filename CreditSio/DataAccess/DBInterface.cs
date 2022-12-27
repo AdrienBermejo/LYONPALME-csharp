@@ -78,7 +78,13 @@ namespace CreditSio.DataAccess
                     if(sqlDataReader.GetString(3) is null)
                     {
                         CompteCourantModel compteCourantModel = new CompteCourantModel();
-                        compteCourantModel.Id
+                        compteCourantModel.SetId(sqlDataReader.GetInt32(0));
+                        compteCourantModel.SetSolde(sqlDataReader.GetDouble(1));
+                    }
+                    else
+                    {
+                        CompteEpargneModel compteEpargneModel = new CompteEpargneModel();
+                        compteEpargneModel
                     }
                     
                     clientModel.Id = sqlDataReader.GetInt32(0);

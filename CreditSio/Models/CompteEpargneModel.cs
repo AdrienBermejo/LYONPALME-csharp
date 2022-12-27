@@ -25,5 +25,44 @@ namespace CreditSio.Models
         /// </summary>
         public int Taux { get; set; }
         #endregion
+
+        #region méthodes
+        /// <summary>
+        /// Retourne l'id du compte.
+        /// </summary>
+        /// <returns></returns>
+        public int GetId()
+        {
+            return Id;
+        }
+
+        /// <summary>
+        /// Obtenir le solde du compte.
+        /// </summary>
+        /// <returns>Solde (propriété de la classe CompteCourant)</returns>
+        public double GetSolde()
+        {
+            return Solde;
+        }
+
+        /// <summary>
+        /// Modifier l'id du compte.
+        /// </summary>
+        /// <param name="id">L'id du compte à modifier.</param>
+        public void SetId(int id)
+        {
+            if (id != 0)
+                Id = id;
+        }
+
+        /// <summary>
+        /// Modifier le solde du compte.
+        /// </summary>
+        /// <param name="solde">Le solde à modifier.</param>
+        public void SetSolde(double solde)
+        {
+            Solde = solde;
+        }
+        #endregion
     }
 }
