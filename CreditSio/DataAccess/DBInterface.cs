@@ -80,19 +80,15 @@ namespace CreditSio.DataAccess
                         CompteCourantModel compteCourantModel = new CompteCourantModel();
                         compteCourantModel.SetId(sqlDataReader.GetInt32(0));
                         compteCourantModel.SetSolde(sqlDataReader.GetDouble(1));
+                        comptes.Add(compteCourantModel);
                     }
                     else
                     {
                         CompteEpargneModel compteEpargneModel = new CompteEpargneModel();
-                        compteEpargneModel
+                        compteEpargneModel.SetId(sqlDataReader.GetInt32(0));
+                        compteEpargneModel.SetSolde(sqlDataReader.GetDouble(1));
+                        comptes.Add(compteEpargneModel);
                     }
-                    
-                    clientModel.Id = sqlDataReader.GetInt32(0);
-                    clientModel.Nom = sqlDataReader.GetString(1);
-                    clientModel.Prenom = sqlDataReader.GetString(2);
-                    clientModel.Mobile = sqlDataReader.GetString(3);
-                    clientModel.Mail = sqlDataReader.GetString(4);
-                    clients.Add(clientModel);
                 }
             }
             catch (InvalidOperationException)
@@ -107,7 +103,7 @@ namespace CreditSio.DataAccess
             {
                 connection.Close();
             }
-            return clients;
+            return comptes;
         }
 }
 }
