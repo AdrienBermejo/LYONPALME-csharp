@@ -28,19 +28,31 @@ namespace CreditSio.Forms
             //On teste que la liste ne soit pas vide. Si elle est vide, c'est qu'il y a eu une erreur...
             if (comptes != null)
             {
-                //On parcourt la liste de ClientModel
+                //On parcourt la liste de CompteModel
                 foreach (CompteModel compte in comptes)
                 {
+                    //Bien que la liste soit une liste de CompteModel, elle contient indifféremment des CompteCourant ou des CompteEpargne.
                     //On teste le type de Compte : Si c'est un CompteCourant.
                     if(compte.GetType().ToString() == "CompteCourantModel")
                     {
-
+                        //On transtype l'objet Compte en CompteCourantModel ie on transforme l'objet Compte en CompteCourant.
+                        CompteCourantModel compteCourantModel = (CompteCourantModel)compte;
+                        //On crée un tableau de chaines de caractères : une ligne contient les données d'un compte (courant ou épargne).
+                        string[] row = { "COURANT", compteCourantModel.GetId().ToString(), compteCourantModel.GetSolde().ToString(), compteCourantModel.Decouvert.ToString(), "---", "---" };
+                        ListViewItem listViewItem = new ListViewItem(row);
+                        //On ajoute la ligne dans la listeview
+                        lvComptes.Items.Add(listViewItem);
                     }
-                    //On crée un tableau de chaines de caractères : une ligne contient les données d'un compte (courant ou épargne).
-                    string[] row = { compte.Id.ToString(), client.Nom, client.Prenom, client.Mobile, client.Mail };
-                    ListViewItem listViewItem = new ListViewItem(row);
-                    //On ajoute la ligne dans la listeview
-                    lvClients.Items.Add(listViewItem);
+                    else
+                    {
+                        // On transtype l'objet Compte en CompteEpargneModel ie on transforme l'objet Compte en CompteEpargne.
+                        CompteEpargneModel compteEpargneModel = (CompteEpargneModel)compte;
+                        //On crée un tableau de chaines de caractères : une ligne contient les données d'un compte (courant ou épargne).
+                        string[] row = { "EPARGNE", compteEpargneModel.GetId().ToString(), compteEpargneModel.GetSolde().ToString(), "---", compteEpargneModel.Type, compteEpargneModel.Taux.ToString() };
+                        ListViewItem listViewItem = new ListViewItem(row);
+                        //On ajoute la ligne dans la listeview
+                        lvComptes.Items.Add(listViewItem);
+                    }
                 }
             }
         }
