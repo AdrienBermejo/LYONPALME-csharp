@@ -55,6 +55,12 @@
     <Compile Include="Forms\FTestsClients.Designer.cs">
       <DependentUpon>FTestsClients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FTestsComptes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FTestsComptes.Designer.cs">
+      <DependentUpon>FTestsComptes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\CompteCourantModel.cs" />
     <Compile Include="Models\CompteEpargneModel.cs" />
@@ -65,6 +71,9 @@
     <Compile Include="Tools\Log.cs" />
     <EmbeddedResource Include="Forms\FTestsClients.resx">
       <DependentUpon>FTestsClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FTestsComptes.resx">
+      <DependentUpon>FTestsComptes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
