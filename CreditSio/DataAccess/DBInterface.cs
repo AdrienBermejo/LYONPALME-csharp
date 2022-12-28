@@ -64,7 +64,7 @@ namespace CreditSio.DataAccess
         {
             //La liste créée est une liste de Compte (et non de CompteCourant ou de CompteEpargne)
             List<CompteModel> comptes = new List<CompteModel>();
-            SqlConnection connection = null; ;
+            SqlConnection connection = null;
             SqlDataReader sqlDataReader = null;
             try
             {
@@ -75,13 +75,15 @@ namespace CreditSio.DataAccess
                 sqlDataReader = sqlCommand.ExecuteReader();
                 while (sqlDataReader.Read())
                 {
-                    //Si le type de compte est null, alors il s'agit d'un compte courant
-                    if(sqlDataReader.GetString(3) is null)
+                    //Si le type de compte est null (colonne 3 de la requête), alors il s'agit d'un compte courant
+                    if(sqlDataReader.IsDBNull(3))
                     {
                         CompteCourantModel compteCourantModel = new CompteCourantModel();
                         compteCourantModel.SetId(sqlDataReader.GetInt32(0));
-                        compteCourantModel.SetSolde(sqlDataReader.GetDouble(1));
-                        compteCourantModel.Decouvert = sqlDataReader.GetDouble(2);
+                        //Le solde du compte est stocké en decimal dans la DB. Il faut le convertir en double.
+                        compteCourantModel.SetSolde(decimal.ToDouble(sqlDataReader.GetDecimal(1)));
+                        //Le découvert du compte est stocké en decimal dans la DB. Il faut le convertir en double.
+                        compteCourantModel.Decouvert = decimal.ToDouble(sqlDataReader.GetDecimal(1));
                         //Bien que l'objet soit un CompteCourant, on peut l'ajouter dans la liste de Compte,
                         //Car un CompteCourant "est un" Compte.
                         comptes.Add(compteCourantModel);
@@ -90,9 +92,11 @@ namespace CreditSio.DataAccess
                     {
                         CompteEpargneModel compteEpargneModel = new CompteEpargneModel();
                         compteEpargneModel.SetId(sqlDataReader.GetInt32(0));
-                        compteEpargneModel.SetSolde(sqlDataReader.GetDouble(1));
+                        //Le solde du compte est stocké en decimal dans la DB. Il faut le convertir en double.
+                        compteEpargneModel.SetSolde(decimal.ToDouble(sqlDataReader.GetDecimal(1)));
                         compteEpargneModel.Type = sqlDataReader.GetString(3);
-                        compteEpargneModel.Taux = sqlDataReader.GetInt32(4);
+                        //Le taux d'interets est stocké en décimal dans la DB. Il faut le convertir en double.
+                        compteEpargneModel.Taux = decimal.ToDouble(sqlDataReader.GetDecimal(4));
                         //Bien que l'objet soit un CompteEpargne, on peut l'ajouter dans la liste de Compte,
                         //Car un CompteEpargne "est un" Compte.
                         comptes.Add(compteEpargneModel);
