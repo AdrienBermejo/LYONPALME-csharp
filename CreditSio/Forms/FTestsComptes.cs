@@ -32,11 +32,11 @@ namespace CreditSio.Forms
                 foreach (CompteModel compte in comptes)
                 {
                     //Bien que la liste soit une liste de CompteModel, elle contient indifféremment des CompteCourant ou des CompteEpargne.
-                    //On teste le type de Compte : Si c'est un CompteCourant.
-                    if(compte.GetType().ToString() == "CompteCourantModel")
+                    //On teste le type de Compte : Si c'est un CompteCourant, on instancie un objet CompteCourantModel (compteCourantModel).
+                    if(compte is CompteCourantModel compteCourantModel)
                     {
                         //On transtype l'objet Compte en CompteCourantModel ie on transforme l'objet Compte en CompteCourant.
-                        CompteCourantModel compteCourantModel = (CompteCourantModel)compte;
+                        //CompteCourantModel compteCourantModel = (CompteCourantModel)compte;
                         //On crée un tableau de chaines de caractères : une ligne contient les données d'un compte (courant ou épargne).
                         string[] row = { "COURANT", compteCourantModel.GetId().ToString(), compteCourantModel.GetSolde().ToString(), compteCourantModel.Decouvert.ToString(), "---", "---" };
                         ListViewItem listViewItem = new ListViewItem(row);
@@ -45,8 +45,8 @@ namespace CreditSio.Forms
                     }
                     else
                     {
-                        // On transtype l'objet Compte en CompteEpargneModel ie on transforme l'objet Compte en CompteEpargne.
-                        CompteEpargneModel compteEpargneModel = (CompteEpargneModel)compte;
+                        // On transforme l'objet Compte en CompteEpargneModel ie on transforme l'objet Compte en CompteEpargne.
+                        CompteEpargneModel compteEpargneModel = compte as CompteEpargneModel;
                         //On crée un tableau de chaines de caractères : une ligne contient les données d'un compte (courant ou épargne).
                         string[] row = { "EPARGNE", compteEpargneModel.GetId().ToString(), compteEpargneModel.GetSolde().ToString(), "---", compteEpargneModel.Type, compteEpargneModel.Taux.ToString() };
                         ListViewItem listViewItem = new ListViewItem(row);
