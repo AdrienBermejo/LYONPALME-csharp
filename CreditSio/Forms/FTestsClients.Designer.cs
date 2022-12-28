@@ -1,5 +1,5 @@
 ﻿
-namespace CreditSio
+namespace CreditSio.Forms
 {
     partial class FTestsClients
     {
