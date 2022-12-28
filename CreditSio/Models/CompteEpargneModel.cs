@@ -23,7 +23,7 @@ namespace CreditSio.Models
         /// <summary>
         /// Taux d'intérêts.
         /// </summary>
-        public int Taux { get; set; }
+        public double Taux { get; set; }
         #endregion
 
         #region méthodes
