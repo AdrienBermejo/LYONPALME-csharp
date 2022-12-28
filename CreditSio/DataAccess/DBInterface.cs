@@ -62,6 +62,7 @@ namespace CreditSio.DataAccess
 
         public static List<CompteModel> GetAllComptes(int idClient)
         {
+            //La liste créée est une liste de Compte (et non de CompteCourant ou de CompteEpargne)
             List<CompteModel> comptes = new List<CompteModel>();
             SqlConnection connection = null; ;
             SqlDataReader sqlDataReader = null;
@@ -80,6 +81,9 @@ namespace CreditSio.DataAccess
                         CompteCourantModel compteCourantModel = new CompteCourantModel();
                         compteCourantModel.SetId(sqlDataReader.GetInt32(0));
                         compteCourantModel.SetSolde(sqlDataReader.GetDouble(1));
+                        compteCourantModel.Decouvert = sqlDataReader.GetDouble(2);
+                        //Bien que l'objet soit un CompteCourant, on peut l'ajouter dans la liste de Compte,
+                        //Car un CompteCourant "est un" Compte.
                         comptes.Add(compteCourantModel);
                     }
                     else
@@ -87,6 +91,10 @@ namespace CreditSio.DataAccess
                         CompteEpargneModel compteEpargneModel = new CompteEpargneModel();
                         compteEpargneModel.SetId(sqlDataReader.GetInt32(0));
                         compteEpargneModel.SetSolde(sqlDataReader.GetDouble(1));
+                        compteEpargneModel.Type = sqlDataReader.GetString(3);
+                        compteEpargneModel.Taux = sqlDataReader.GetInt32(4);
+                        //Bien que l'objet soit un CompteEpargne, on peut l'ajouter dans la liste de Compte,
+                        //Car un CompteEpargne "est un" Compte.
                         comptes.Add(compteEpargneModel);
                     }
                 }
