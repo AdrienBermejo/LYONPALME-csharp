@@ -12,7 +12,7 @@ using CreditSio.Models;
 
 
 
-namespace CreditSio
+namespace CreditSio.Forms
 {
     public partial class FTestsClients : Form
     {
