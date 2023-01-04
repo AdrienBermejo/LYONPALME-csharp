@@ -103,7 +103,7 @@ namespace CreditSio.DataAccess
                                 //Le solde du compte est stocké en decimal dans la DB. Il faut le convertir en double.
                                 compteCourantModel.SetSolde(decimal.ToDouble(sqlDataReader.GetDecimal(1)));
                                 //Le découvert du compte est stocké en decimal dans la DB. Il faut le convertir en double.
-                                compteCourantModel.Decouvert = decimal.ToDouble(sqlDataReader.GetDecimal(1));
+                                compteCourantModel.Decouvert = decimal.ToDouble(sqlDataReader.GetDecimal(2));
                                 //Bien que l'objet soit un CompteCourant, on peut l'ajouter dans la liste de Compte,
                                 //Car un CompteCourant "est un" Compte.
                                 comptes.Add(compteCourantModel);
