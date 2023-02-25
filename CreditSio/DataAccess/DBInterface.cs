@@ -36,16 +36,23 @@ namespace CreditSio.DataAccess
                     sqlCommand.Parameters.Add("@pPassword", SqlDbType.VarBinary).Value = password;
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
-                        sqlDataReader.Read();
-                        conseiller.Id = sqlDataReader.GetInt32(0);
-                        conseiller.Nom = sqlDataReader.GetString(1);
-                        conseiller.Prenom = sqlDataReader.GetString(2);
-                        using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                        if(sqlDataReader.HasRows)
                         {
-                        if (conseiller.Nom == null || conseiller.Prenom == null)
-                            Log.WriteLog("DBInterface : identifiants de connexion invalides", w);
+                            sqlDataReader.Read();
+                            conseiller.Id = sqlDataReader.GetInt32(0);
+                            conseiller.Nom = sqlDataReader.GetString(1);
+                            conseiller.Prenom = sqlDataReader.GetString(2);
+                            using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                            {
+                                Log.WriteLog(String.Concat("DBInterface : l'utilisateur ", login, " vient de se connecter"), w);
+                            }
+                        }
                         else
-                            Log.WriteLog(String.Concat("DBInterface : l'utilisateur ", login, " vient de se connecter"), w);
+                        {
+                            using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                            {
+                                Log.WriteLog(String.Concat(String.Concat("DBInterface : identifiants de connexion invalide. Login :", login)), w);
+                            }
                         }
                     }
                 }
@@ -56,7 +63,6 @@ namespace CreditSio.DataAccess
                 {
                     Log.WriteLog("DBInterface : erreur SQL", w);
                 }
-
             }
             finally
             {
@@ -64,6 +70,7 @@ namespace CreditSio.DataAccess
             }
             return conseiller;
         }
+
         /// <summary>
         /// Obtenir tous les clients d'un conseiller financier.
         /// </summary>
