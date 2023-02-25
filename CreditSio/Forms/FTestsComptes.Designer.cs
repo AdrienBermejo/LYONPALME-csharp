@@ -58,16 +58,17 @@ namespace CreditSio.Forms
             // TypeCompte
             // 
             this.TypeCompte.Text = "TYPE du COMPTE";
-            this.TypeCompte.Width = 165;
+            this.TypeCompte.Width = 148;
             // 
             // ID
             // 
             this.ID.Text = "ID";
+            this.ID.Width = 34;
             // 
             // SOLDE
             // 
             this.SOLDE.Text = "SOLDE";
-            this.SOLDE.Width = 84;
+            this.SOLDE.Width = 67;
             // 
             // DECOUVERT
             // 
@@ -77,12 +78,12 @@ namespace CreditSio.Forms
             // TYPEEPARGNE
             // 
             this.TYPEEPARGNE.Text = "TYPE EPARGNE";
-            this.TYPEEPARGNE.Width = 185;
+            this.TYPEEPARGNE.Width = 206;
             // 
             // TAUXINTERET
             // 
             this.TAUXINTERET.Text = "TAUX INTERETS";
-            this.TAUXINTERET.Width = 150;
+            this.TAUXINTERET.Width = 161;
             // 
             // FTestsComptes
             // 

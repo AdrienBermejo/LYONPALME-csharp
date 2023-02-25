@@ -17,25 +17,58 @@ namespace CreditSio.DataAccess
     public class DBInterface
     {
         /// <summary>
+        /// Obtenir le conseiller qui s'est connecté
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="password"></param>
+        /// <returns>L'objet Conseiller qui s'est connecté</returns>
+        public static ConseillerModel GetConseiller(string login, byte[] password)
+        {
+            ConseillerModel conseiller = new ConseillerModel();
+            SqlConnection connection = null;
+            try
+            {
+                connection = Connection.getInstance().GetConnection();
+                using (SqlCommand sqlCommand = new SqlCommand("sp_authentification", connection))
+                {
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.Parameters.AddWithValue("@pLogin", SqlDbType.NVarChar).Value = login;
+                    sqlCommand.Parameters.Add("@pPassword", SqlDbType.VarBinary).Value = password;
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        sqlDataReader.Read();
+                        conseiller.Id = sqlDataReader.GetInt32(0);
+                        conseiller.Nom = sqlDataReader.GetString(1);
+                        conseiller.Prenom = sqlDataReader.GetString(2);
+                        using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                        {
+                        if (conseiller.Nom == null || conseiller.Prenom == null)
+                            Log.WriteLog("DBInterface : identifiants de connexion invalides", w);
+                        else
+                            Log.WriteLog(String.Concat("DBInterface : l'utilisateur ", login, " vient de se connecter"), w);
+                        }
+                    }
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                {
+                    Log.WriteLog("DBInterface : erreur SQL", w);
+                }
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return conseiller;
+        }
+        /// <summary>
         /// Obtenir tous les clients d'un conseiller financier.
         /// </summary>
         /// <param name="idConseiller"></param>
         /// <returns>Liste de tous les clients</returns>
-//        using (SqlConnection connection = new SqlConnection(
-//        connectionString))
-//    {
-//        SqlCommand command = new SqlCommand(
-//            queryString, connection);
-//        connection.Open();
-//        using(SqlDataReader reader = command.ExecuteReader())
-//        {
-//            while (reader.Read())
-//            {
-//                Console.WriteLine(String.Format("{0}, {1}",
-//                    reader[0], reader[1]));
-//            }
-//}
-//    }
         public static List<ClientModel> GetAllClients(int idConseiller)
         {
             List<ClientModel> clients = new List<ClientModel>();

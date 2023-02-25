@@ -49,6 +49,12 @@
   <ItemGroup>
     <Compile Include="DataAccess\Connexion.cs" />
     <Compile Include="DataAccess\DBInterface.cs" />
+    <Compile Include="Forms\FTestConnexion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FTestConnexion.Designer.cs">
+      <DependentUpon>FTestConnexion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FTestsClients.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\Log.cs" />
+    <EmbeddedResource Include="Forms\FTestConnexion.resx">
+      <DependentUpon>FTestConnexion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FTestsClients.resx">
       <DependentUpon>FTestsClients.cs</DependentUpon>
     </EmbeddedResource>
