@@ -15,6 +15,7 @@ namespace CreditSio.Forms
 {
     public partial class FTestConnexion : Form
     {
+        private ConseillerModel conseiller;
         public FTestConnexion()
         {
             InitializeComponent();
@@ -22,7 +23,6 @@ namespace CreditSio.Forms
 
         private void btnConnecter_Click(object sender, EventArgs e)
         {
-            ConseillerModel conseiller;
             string login, password;
             login = tbxLogin.Text;
             password = tbxPassword.Text;
@@ -46,6 +46,13 @@ namespace CreditSio.Forms
                     btnVoirComptes.Visible = true;
                 }
             }
+        }
+
+        private void btnVoirComptes_Click(object sender, EventArgs e)
+        {
+            FTestsClients fTestsClients = new FTestsClients(conseiller.Id);
+            fTestsClients.ShowDialog();
+
         }
     }
 }

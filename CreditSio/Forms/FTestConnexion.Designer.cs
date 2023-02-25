@@ -35,9 +35,9 @@ namespace CreditSio.Forms
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnConnecter = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.labConnexion = new System.Windows.Forms.Label();
-            this.labBienvenue = new System.Windows.Forms.Label();
             this.btnVoirComptes = new System.Windows.Forms.Button();
+            this.labBienvenue = new System.Windows.Forms.Label();
+            this.labConnexion = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,14 +94,16 @@ namespace CreditSio.Forms
             this.panel1.Size = new System.Drawing.Size(343, 236);
             this.panel1.TabIndex = 5;
             // 
-            // labConnexion
+            // btnVoirComptes
             // 
-            this.labConnexion.AutoSize = true;
-            this.labConnexion.Location = new System.Drawing.Point(31, 34);
-            this.labConnexion.Name = "labConnexion";
-            this.labConnexion.Size = new System.Drawing.Size(197, 20);
-            this.labConnexion.TabIndex = 0;
-            this.labConnexion.Text = "Vous n\'êtes pas connecté.";
+            this.btnVoirComptes.Location = new System.Drawing.Point(35, 147);
+            this.btnVoirComptes.Name = "btnVoirComptes";
+            this.btnVoirComptes.Size = new System.Drawing.Size(193, 48);
+            this.btnVoirComptes.TabIndex = 2;
+            this.btnVoirComptes.Text = "Voir les comptes";
+            this.btnVoirComptes.UseVisualStyleBackColor = true;
+            this.btnVoirComptes.Visible = false;
+            this.btnVoirComptes.Click += new System.EventHandler(this.btnVoirComptes_Click);
             // 
             // labBienvenue
             // 
@@ -113,15 +115,14 @@ namespace CreditSio.Forms
             this.labBienvenue.Text = "Bienvenue, ";
             this.labBienvenue.Visible = false;
             // 
-            // btnVoirComptes
+            // labConnexion
             // 
-            this.btnVoirComptes.Location = new System.Drawing.Point(35, 147);
-            this.btnVoirComptes.Name = "btnVoirComptes";
-            this.btnVoirComptes.Size = new System.Drawing.Size(193, 48);
-            this.btnVoirComptes.TabIndex = 2;
-            this.btnVoirComptes.Text = "Voir les comptes";
-            this.btnVoirComptes.UseVisualStyleBackColor = true;
-            this.btnVoirComptes.Visible = false;
+            this.labConnexion.AutoSize = true;
+            this.labConnexion.Location = new System.Drawing.Point(31, 34);
+            this.labConnexion.Name = "labConnexion";
+            this.labConnexion.Size = new System.Drawing.Size(197, 20);
+            this.labConnexion.TabIndex = 0;
+            this.labConnexion.Text = "Vous n\'êtes pas connecté.";
             // 
             // FTestConnexion
             // 
