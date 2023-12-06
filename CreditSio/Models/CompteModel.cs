@@ -14,17 +14,20 @@ namespace CreditSio.Models
     /// </summary>
     public abstract class CompteModel
     {
-        protected int id;
-        protected double solde;
+        protected string id;
+        protected float solde;
+        protected ClientModel clientModel;
 
         /// <summary>
         /// Id du compte.
         /// </summary>
-        protected int Id { get => id; set => id = value; }
+        protected string Id { get => id; set => id = value; }
 
         /// <summary>
         /// Solde du compte.
         /// </summary>
-        protected double Solde { get => solde; set => solde = value; }
+        protected float Solde { get => solde; set => solde = value; }
+
+        protected ClientModel ClientModel { get => clientModel; set => clientModel = value; }
     }
 }

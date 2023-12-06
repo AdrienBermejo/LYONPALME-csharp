@@ -26,7 +26,7 @@ namespace CreditSio.Models
         /// Retourne l'id du compte.
         /// </summary>
         /// <returns></returns>
-        public int GetId()
+        public string GetId()
         {
             return Id;
         }
@@ -35,7 +35,7 @@ namespace CreditSio.Models
         /// Obtenir le solde du compte.
         /// </summary>
         /// <returns>Solde (propriété de la classe CompteCourant)</returns>
-        public double GetSolde()
+        public float GetSolde()
         {
             return Solde;
         }
@@ -44,9 +44,9 @@ namespace CreditSio.Models
         /// Modifier l'id du compte.
         /// </summary>
         /// <param name="id">L'id du compte à modifier.</param>
-        public void SetId(int id)
+        public void SetId(string id)
         {
-            if (id != 0)
+            if (id != null)
                 Id = id;
         }
 
@@ -54,7 +54,7 @@ namespace CreditSio.Models
         /// Modifier le solde du compte.
         /// </summary>
         /// <param name="solde">Le solde à modifier.</param>
-        public void SetSolde(double solde)
+        public void SetSolde(float solde)
         {
             Solde = solde;
         }

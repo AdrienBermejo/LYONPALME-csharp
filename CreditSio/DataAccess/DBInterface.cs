@@ -29,17 +29,17 @@ namespace CreditSio.DataAccess
             try
             {
                 connection = Connection.getInstance().GetConnection();
-                using (SqlCommand sqlCommand = new SqlCommand("sp_authentification", connection))
+                using (SqlCommand sqlCommand = new SqlCommand("authentification", connection))
                 {
                     sqlCommand.CommandType = CommandType.StoredProcedure;
-                    sqlCommand.Parameters.AddWithValue("@pLogin", SqlDbType.NVarChar).Value = login;
-                    sqlCommand.Parameters.Add("@pPassword", SqlDbType.VarBinary).Value = password;
+                    sqlCommand.Parameters.AddWithValue("@login", SqlDbType.NVarChar).Value = login;
+                    sqlCommand.Parameters.Add("@mdp", SqlDbType.VarBinary).Value = password;
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
                         if(sqlDataReader.HasRows)
                         {
                             sqlDataReader.Read();
-                            conseiller.Id = sqlDataReader.GetInt32(0);
+                            conseiller.Id = sqlDataReader.GetString(0);
                             conseiller.Nom = sqlDataReader.GetString(1);
                             conseiller.Prenom = sqlDataReader.GetString(2);
                             using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
@@ -86,13 +86,13 @@ namespace CreditSio.DataAccess
                 using (SqlCommand sqlCommand = new SqlCommand("spClient_GetByConseiller", connection))
                 {
                     sqlCommand.CommandType = CommandType.StoredProcedure;
-                    sqlCommand.Parameters.AddWithValue("@pIdConseiller", SqlDbType.Int).Value = idConseiller;
+                    sqlCommand.Parameters.AddWithValue("@pIdConseiller", SqlDbType.VarChar).Value = idConseiller;
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
                         while (sqlDataReader.Read())
                         {
                             ClientModel clientModel = new ClientModel();
-                            clientModel.Id = sqlDataReader.GetInt32(0);
+                            clientModel.Id = sqlDataReader.GetString(0);
                             clientModel.Nom = sqlDataReader.GetString(1);
                             clientModel.Prenom = sqlDataReader.GetString(2);
                             clientModel.Mobile = sqlDataReader.GetString(3);
@@ -118,7 +118,7 @@ namespace CreditSio.DataAccess
         }
 
 
-        public static List<CompteModel> GetAllComptes(int idClient)
+        public static List<CompteModel> GetAllComptes(string idClient)
         {
             //La liste créée est une liste de Compte (et non de CompteCourant ou de CompteEpargne)
             List<CompteModel> comptes = new List<CompteModel>();
@@ -130,7 +130,7 @@ namespace CreditSio.DataAccess
                 using (SqlCommand sqlCommand = new SqlCommand("spCompte_GetByClient", connection))
                 {
                     sqlCommand.CommandType = CommandType.StoredProcedure;
-                    sqlCommand.Parameters.AddWithValue("@pIdClient", SqlDbType.Int).Value = idClient;
+                    sqlCommand.Parameters.AddWithValue("@pIdClient", SqlDbType.VarChar).Value = idClient;
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
                         while (sqlDataReader.Read())
@@ -139,11 +139,11 @@ namespace CreditSio.DataAccess
                             if (sqlDataReader.IsDBNull(3))
                             {
                                 CompteCourantModel compteCourantModel = new CompteCourantModel();
-                                compteCourantModel.SetId(sqlDataReader.GetInt32(0));
+                                compteCourantModel.SetId(sqlDataReader.GetString(0));
                                 //Le solde du compte est stocké en decimal dans la DB. Il faut le convertir en double.
-                                compteCourantModel.SetSolde(decimal.ToDouble(sqlDataReader.GetDecimal(1)));
+                                compteCourantModel.SetSolde(decimal.ToSingle(sqlDataReader.GetDecimal(1))); 
                                 //Le découvert du compte est stocké en decimal dans la DB. Il faut le convertir en double.
-                                compteCourantModel.Decouvert = decimal.ToDouble(sqlDataReader.GetDecimal(2));
+                                compteCourantModel.Decouvert = decimal.ToSingle(sqlDataReader.GetDecimal(2));
                                 //Bien que l'objet soit un CompteCourant, on peut l'ajouter dans la liste de Compte,
                                 //Car un CompteCourant "est un" Compte.
                                 comptes.Add(compteCourantModel);
@@ -151,12 +151,12 @@ namespace CreditSio.DataAccess
                             else
                             {
                                 CompteEpargneModel compteEpargneModel = new CompteEpargneModel();
-                                compteEpargneModel.SetId(sqlDataReader.GetInt32(0));
+                                compteEpargneModel.SetId(sqlDataReader.GetString(0));
                                 //Le solde du compte est stocké en decimal dans la DB. Il faut le convertir en double.
-                                compteEpargneModel.SetSolde(decimal.ToDouble(sqlDataReader.GetDecimal(1)));
+                                compteEpargneModel.SetSolde(decimal.ToSingle(sqlDataReader.GetDecimal(1)));
                                 compteEpargneModel.Type = sqlDataReader.GetString(3);
                                 //Le taux d'interets est stocké en décimal dans la DB. Il faut le convertir en double.
-                                compteEpargneModel.Taux = decimal.ToDouble(sqlDataReader.GetDecimal(4));
+                                compteEpargneModel.Taux = decimal.ToSingle(sqlDataReader.GetDecimal(4));
                                 //Bien que l'objet soit un CompteEpargne, on peut l'ajouter dans la liste de Compte,
                                 //Car un CompteEpargne "est un" Compte.
                                 comptes.Add(compteEpargneModel);

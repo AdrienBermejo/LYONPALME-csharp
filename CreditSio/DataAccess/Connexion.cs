@@ -45,6 +45,7 @@ namespace CreditSio.DataAccess
                 connectionString = ConfigurationManager.ConnectionStrings["sqlserver_creditsio"].ConnectionString;
                 sqlConnection = new SqlConnection(connectionString);
                 sqlConnection.Open();
+                return sqlConnection;
                 
             }
             catch(SqlException)

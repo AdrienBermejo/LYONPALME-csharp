@@ -19,7 +19,7 @@ namespace CreditSio.Models
         /// <summary>
         /// Id du client.
         /// </summary>
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Nom du client.
@@ -40,6 +40,8 @@ namespace CreditSio.Models
         /// Mail.
         /// </summary>
         public string Mail { get; set; }
+
+        public ConseillerModel Conseiller { get; set; }
         #endregion
     }
 }

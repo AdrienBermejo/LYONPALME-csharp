@@ -18,7 +18,7 @@ namespace CreditSio.Models
         /// <summary>
         /// Id du conseiller.
         /// </summary>
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Nom du conseiller.
