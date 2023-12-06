@@ -17,14 +17,14 @@ namespace CreditSio.Forms
     public partial class FTestsClients : Form
     {
         //L'id du conseiller passé en paramètre est stocké dans un attribut privé.
-        private int idConseiller;
-        public FTestsClients()
+        private string idConseiller;
+        /*public FTestsClients(string id)
         {
             InitializeComponent();
-        }
+        }*/
 
         //On surcharge le constructeur afin de lui passer l'id du conseiller en paramètre.
-        public FTestsClients(int id) : this()
+        public FTestsClients(string id) //: this()
         {
             idConseiller = id;
         }
@@ -41,13 +41,18 @@ namespace CreditSio.Forms
                 foreach (ClientModel client in clients)
                 {
                     //On crée un tableau de chaines de caractères : une ligne contient les données d'un client
-                    string[] row = { client.Id.ToString(), client.Nom, client.Prenom, client.Mobile, client.Mail };
+                    string[] row = { client.Id/*.ToString()*/, client.Nom, client.Prenom, client.Mobile, client.Mail };
                     ListViewItem listViewItem = new ListViewItem(row);
                     //On ajoute la ligne dans la listeview
                     lvClients.Items.Add(listViewItem);
                 }
             }
             
+        }
+
+        private void lvClients_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

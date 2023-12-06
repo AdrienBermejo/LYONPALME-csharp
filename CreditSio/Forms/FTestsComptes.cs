@@ -22,7 +22,7 @@ namespace CreditSio.Forms
         private void FTestsComptes_Load(object sender, EventArgs e)
         {
             //On choisit arbitrairement le client avec l'id 2
-            int id = 2;
+            string id = "CO001";
             //On récupère tous les comptes de ce client
             List<CompteModel> comptes = DBInterface.GetAllComptes(id);
             //On teste que la liste ne soit pas vide. Si elle est vide, c'est qu'il y a eu une erreur...

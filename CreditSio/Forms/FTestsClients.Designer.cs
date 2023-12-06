@@ -54,6 +54,7 @@ namespace CreditSio.Forms
             this.lvClients.TabIndex = 0;
             this.lvClients.UseCompatibleStateImageBehavior = false;
             this.lvClients.View = System.Windows.Forms.View.Details;
+            this.lvClients.SelectedIndexChanged += new System.EventHandler(this.lvClients_SelectedIndexChanged);
             // 
             // ID
             // 

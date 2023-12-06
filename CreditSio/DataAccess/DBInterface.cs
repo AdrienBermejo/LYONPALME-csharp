@@ -76,7 +76,7 @@ namespace CreditSio.DataAccess
         /// </summary>
         /// <param name="idConseiller"></param>
         /// <returns>Liste de tous les clients</returns>
-        public static List<ClientModel> GetAllClients(int idConseiller)
+        public static List<ClientModel> GetAllClients(string idConseiller)
         {
             List<ClientModel> clients = new List<ClientModel>();
             SqlConnection connection = null;
@@ -181,6 +181,11 @@ namespace CreditSio.DataAccess
             }
             return comptes;
         }
+
+        /*internal static List<ClientModel> GetAllClients(string idConseiller)
+        {
+            throw new NotImplementedException();
+        }*/
     }
 }
 
