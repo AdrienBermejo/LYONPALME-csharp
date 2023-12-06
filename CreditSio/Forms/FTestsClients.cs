@@ -21,11 +21,17 @@ namespace CreditSio.Forms
         /*public FTestsClients(string id)
         {
             InitializeComponent();
-        }*/
+        }
 
         //On surcharge le constructeur afin de lui passer l'id du conseiller en paramètre.
-        public FTestsClients(string id) //: this()
+        public FTestsClients(string id) : this()
         {
+            idConseiller = id;
+        }*/
+
+        public FTestsClients(string id) //: base()
+        {
+            InitializeComponent();
             idConseiller = id;
         }
 

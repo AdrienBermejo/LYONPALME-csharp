@@ -87,10 +87,16 @@ namespace CreditSio.DataAccess
                 {
                     sqlCommand.CommandType = CommandType.StoredProcedure;
                     sqlCommand.Parameters.AddWithValue("@pIdConseiller", SqlDbType.VarChar).Value = idConseiller;
+                    /// tentative d'extraction d'erreur :
+                    //Console.WriteLine("erreur");
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
                         while (sqlDataReader.Read())
                         {
+                            /*using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                            {
+                                Log.WriteLog("creation d'un client", w);
+                            }*/
                             ClientModel clientModel = new ClientModel();
                             clientModel.Id = sqlDataReader.GetString(0);
                             clientModel.Nom = sqlDataReader.GetString(1);
@@ -98,6 +104,8 @@ namespace CreditSio.DataAccess
                             clientModel.Mobile = sqlDataReader.GetString(3);
                             clientModel.Mail = sqlDataReader.GetString(4);
                             clients.Add(clientModel);
+                            /// tentative d'extraction d'erreur :
+                            //Console.WriteLine(clientModel.Id);
                         }
                     }
                 }
