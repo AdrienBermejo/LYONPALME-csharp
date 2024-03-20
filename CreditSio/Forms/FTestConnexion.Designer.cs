@@ -137,6 +137,7 @@ namespace CreditSio.Forms
             this.Controls.Add(this.tbxLogin);
             this.Name = "FTestConnexion";
             this.Text = "Connexion à l\'application";
+            this.Load += new System.EventHandler(this.FTestConnexion_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

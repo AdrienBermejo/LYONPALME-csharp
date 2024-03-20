@@ -54,5 +54,10 @@ namespace CreditSio.Forms
             fTestsClients.ShowDialog();
             ///test
         }
+
+        private void FTestConnexion_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
