@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditSio", "CreditSio.csproj", "{21987CAA-82FE-4261-BFC8-B5852A9D03A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyonPalme", "LyonPalme.csproj", "{21987CAA-82FE-4261-BFC8-B5852A9D03A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
