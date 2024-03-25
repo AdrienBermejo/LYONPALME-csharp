@@ -194,6 +194,40 @@ namespace CreditSio.DataAccess
         {
             throw new NotImplementedException();
         }*/
+
+        public static void AddMaterielStock(MaterielModel materiel)
+        {
+            SqlConnection connection = null;
+            try
+            {
+                connection = Connection.getInstance().GetConnection();
+                using (SqlCommand sqlCommand = new SqlCommand("LP_AjoutMateriel", connection))
+                {
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.Parameters.AddWithValue("@codeMateriel", SqlDbType.VarChar).Value = materiel.IdMateriel;
+                    sqlCommand.Parameters.AddWithValue("@marque", SqlDbType.VarChar).Value = materiel.Marque;
+                    sqlCommand.Parameters.AddWithValue("@libelle", SqlDbType.VarChar).Value = materiel.Libelle;
+                    sqlCommand.Parameters.AddWithValue("@etatMateriel", SqlDbType.VarChar).Value = materiel.Etat;
+                    /// tentative d'extraction d'erreur :
+                    //Console.WriteLine("erreur");
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                    }
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                {
+                    Log.WriteLog("DBInterface : erreur SQL", w);
+                }
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }
 

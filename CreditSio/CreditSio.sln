@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyonPalme", "LyonPalme.csproj", "{21987CAA-82FE-4261-BFC8-B5852A9D03A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGestionMateriel", "..\TestGestionMateriel\TestGestionMateriel.csproj", "{F08C8038-D537-43ED-9EFB-485DDC66780E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{21987CAA-82FE-4261-BFC8-B5852A9D03A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21987CAA-82FE-4261-BFC8-B5852A9D03A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21987CAA-82FE-4261-BFC8-B5852A9D03A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F08C8038-D537-43ED-9EFB-485DDC66780E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F08C8038-D537-43ED-9EFB-485DDC66780E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F08C8038-D537-43ED-9EFB-485DDC66780E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F08C8038-D537-43ED-9EFB-485DDC66780E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

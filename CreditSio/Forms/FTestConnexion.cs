@@ -59,5 +59,10 @@ namespace CreditSio.Forms
         {
 
         }
+
+        private void tbxLogin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

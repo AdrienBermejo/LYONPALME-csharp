@@ -47,6 +47,7 @@ namespace CreditSio.Forms
             this.tbxLogin.Name = "tbxLogin";
             this.tbxLogin.Size = new System.Drawing.Size(276, 26);
             this.tbxLogin.TabIndex = 0;
+            this.tbxLogin.TextChanged += new System.EventHandler(this.tbxLogin_TextChanged);
             // 
             // tbxPassword
             // 

@@ -67,6 +67,12 @@
     <Compile Include="Forms\FTestsComptes.Designer.cs">
       <DependentUpon>FTestsComptes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\F_AjoutMateriel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\F_AjoutMateriel.Designer.cs">
+      <DependentUpon>F_AjoutMateriel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\CombinaisonModel.cs" />
     <Compile Include="Models\CompteCourantModel.cs" />
@@ -88,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FTestsComptes.resx">
       <DependentUpon>FTestsComptes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\F_AjoutMateriel.resx">
+      <DependentUpon>F_AjoutMateriel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
