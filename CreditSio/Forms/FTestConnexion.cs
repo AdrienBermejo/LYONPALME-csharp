@@ -50,9 +50,9 @@ namespace CreditSio.Forms
 
         private void btnVoirComptes_Click(object sender, EventArgs e)
         {
-            FTestsClients fTestsClients = new FTestsClients(conseiller.Id);
+            F_MainPage fTestsClients = new F_MainPage();
             fTestsClients.ShowDialog();
-            ///test
+            ///changement dans connection pour que ça affiche la page principale
         }
 
         private void FTestConnexion_Load(object sender, EventArgs e)

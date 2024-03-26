@@ -73,6 +73,30 @@
     <Compile Include="Forms\F_AjoutMateriel.Designer.cs">
       <DependentUpon>F_AjoutMateriel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\F_Pret.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\F_Pret.Designer.cs">
+      <DependentUpon>F_Pret.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\F_MainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\F_MainPage.Designer.cs">
+      <DependentUpon>F_MainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\F_Materiel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\F_Materiel.Designer.cs">
+      <DependentUpon>F_Materiel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\F_AjouterPret.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\F_AjouterPret.Designer.cs">
+      <DependentUpon>F_AjouterPret.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ClientModel.cs" />
     <Compile Include="Models\CombinaisonModel.cs" />
     <Compile Include="Models\CompteCourantModel.cs" />
@@ -97,6 +121,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\F_AjoutMateriel.resx">
       <DependentUpon>F_AjoutMateriel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\F_MainPage.resx">
+      <DependentUpon>F_MainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\F_Materiel.resx">
+      <DependentUpon>F_Materiel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\F_AjouterPret.resx">
+      <DependentUpon>F_AjouterPret.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\F_Pret.resx">
+      <DependentUpon>F_Pret.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -44,5 +44,10 @@ namespace CreditSio.Forms
             etat = textBox3.Text;
             MaterielModel materiel = new MaterielModel(idMateriel,marque,libelle,etat);
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
