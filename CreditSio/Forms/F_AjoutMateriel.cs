@@ -1,4 +1,5 @@
-﻿using CreditSio.Models;
+﻿using CreditSio.DataAccess;
+using CreditSio.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,6 +44,8 @@ namespace CreditSio.Forms
             libelle = textBox2.Text;
             etat = textBox3.Text;
             MaterielModel materiel = new MaterielModel(idMateriel,marque,libelle,etat);
+
+            DBInterface.AddMaterielStock(materiel);
         }
 
         private void label1_Click(object sender, EventArgs e)

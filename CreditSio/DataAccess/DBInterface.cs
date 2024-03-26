@@ -228,6 +228,41 @@ namespace CreditSio.DataAccess
                 connection.Close();
             }
         }
+        public static void AddEmprunt(string idEmprunt,string idMateriel, string idNageur, string etat, DateTime date)
+        {
+            SqlConnection connection = null;
+            try
+            {
+                connection = Connection.getInstance().GetConnection();
+                using (SqlCommand sqlCommand = new SqlCommand("LP_AjoutEmprunt", connection))
+                {
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.Parameters.AddWithValue("@codePret", SqlDbType.VarChar).Value = idEmprunt;
+                    sqlCommand.Parameters.AddWithValue("@codeMateriel", SqlDbType.VarChar).Value = idMateriel;
+                    sqlCommand.Parameters.AddWithValue("@numNageur", SqlDbType.VarChar).Value = idNageur;
+                    sqlCommand.Parameters.AddWithValue("@etatMateriel", SqlDbType.VarChar).Value = etat;
+                    sqlCommand.Parameters.AddWithValue("@dateFin", SqlDbType.Date).Value = date;
+                    sqlCommand.Parameters.AddWithValue("@dateDebut", SqlDbType.Date).Value = date;
+                    /// tentative d'extraction d'erreur :
+                    //Console.WriteLine("erreur");
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                    }
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                {
+                    Log.WriteLog("DBInterface : erreur SQL", w);
+                }
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }
 

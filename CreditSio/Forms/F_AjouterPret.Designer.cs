@@ -95,6 +95,7 @@
             this.EnvoiePret.TabIndex = 5;
             this.EnvoiePret.Text = "Valider";
             this.EnvoiePret.UseVisualStyleBackColor = true;
+            this.EnvoiePret.Click += new System.EventHandler(this.EnvoiePret_Click);
             // 
             // DateTime
             // 
@@ -102,6 +103,7 @@
             this.DateTime.Name = "DateTime";
             this.DateTime.Size = new System.Drawing.Size(200, 26);
             this.DateTime.TabIndex = 6;
+            this.DateTime.ValueChanged += new System.EventHandler(this.DateTime_ValueChanged);
             // 
             // Input_EtatPret
             // 
@@ -109,6 +111,7 @@
             this.Input_EtatPret.Name = "Input_EtatPret";
             this.Input_EtatPret.Size = new System.Drawing.Size(200, 26);
             this.Input_EtatPret.TabIndex = 7;
+            this.Input_EtatPret.TextChanged += new System.EventHandler(this.Input_EtatPret_TextChanged);
             // 
             // Input_CodeMateriel
             // 
@@ -116,6 +119,7 @@
             this.Input_CodeMateriel.Name = "Input_CodeMateriel";
             this.Input_CodeMateriel.Size = new System.Drawing.Size(200, 26);
             this.Input_CodeMateriel.TabIndex = 8;
+            this.Input_CodeMateriel.TextChanged += new System.EventHandler(this.Input_CodeMateriel_TextChanged);
             // 
             // Input_NumeroNageur
             // 
@@ -123,6 +127,7 @@
             this.Input_NumeroNageur.Name = "Input_NumeroNageur";
             this.Input_NumeroNageur.Size = new System.Drawing.Size(200, 26);
             this.Input_NumeroNageur.TabIndex = 9;
+            this.Input_NumeroNageur.TextChanged += new System.EventHandler(this.Input_NumeroNageur_TextChanged);
             // 
             // Input_CodePret
             // 
@@ -130,8 +135,9 @@
             this.Input_CodePret.Name = "Input_CodePret";
             this.Input_CodePret.Size = new System.Drawing.Size(200, 26);
             this.Input_CodePret.TabIndex = 10;
+            this.Input_CodePret.TextChanged += new System.EventHandler(this.Input_CodePret_TextChanged);
             // 
-            // F_Pret
+            // F_AjouterPret
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -147,7 +153,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "F_Pret";
+            this.Name = "F_AjouterPret";
             this.Text = "F_Pret";
             this.ResumeLayout(false);
             this.PerformLayout();
