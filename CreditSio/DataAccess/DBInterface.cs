@@ -263,6 +263,38 @@ namespace CreditSio.DataAccess
                 connection.Close();
             }
         }
+
+    public static void ModifyEmprunt(string idEmprunt, string idMateriel, string idNageur, string etat, DateTime date)
+        {
+            SqlConnection connection = null;
+            try
+            {
+                connection = Connection.getInstance().GetConnection();
+                using (SqlCommand sqlCommand = new SqlCommand("LP_ModifyEmprunt", connection))
+                {
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.Parameters.AddWithValue("@dateFin", SqlDbType.VarChar).Value = date;
+                    sqlCommand.Parameters.AddWithValue("@etatMateriel", SqlDbType.VarChar).Value = etat;
+
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                    } 
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                {
+                    Log.WriteLog("DBInterface : erreur SQL", w);
+                }
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+    }
     }
 }
 
