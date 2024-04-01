@@ -273,8 +273,13 @@ namespace CreditSio.DataAccess
                 using (SqlCommand sqlCommand = new SqlCommand("LP_ModifyEmprunt", connection))
                 {
                     sqlCommand.CommandType = CommandType.StoredProcedure;
-                    sqlCommand.Parameters.AddWithValue("@dateFin", SqlDbType.VarChar).Value = date;
-                    sqlCommand.Parameters.AddWithValue("@etatMateriel", SqlDbType.VarChar).Value = etat;
+                    sqlCommand.Parameters.AddWithValue("@idEmprunt", idEmprunt);
+                    sqlCommand.Parameters.AddWithValue("@idMateriel", idMateriel);
+                    sqlCommand.Parameters.AddWithValue("@idNageur", idNageur);
+                    sqlCommand.Parameters.AddWithValue("@etatMateriel", etat);
+                    sqlCommand.Parameters.AddWithValue("@dateFin", date);
+
+                    sqlCommand.ExecuteNonQuery();
 
                     using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                     {
