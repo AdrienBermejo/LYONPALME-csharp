@@ -264,7 +264,7 @@ namespace CreditSio.DataAccess
             }
         }
 
-    public static void ModifyEmprunt(string idEmprunt, string idMateriel, string idNageur, string etat, DateTime date)
+        public static void ModifyEmprunt(string idEmprunt, string idMateriel, string idNageur, string etat, DateTime date)
         {
             SqlConnection connection = null;
             try
@@ -280,10 +280,6 @@ namespace CreditSio.DataAccess
                     sqlCommand.Parameters.AddWithValue("@dateFin", date);
 
                     sqlCommand.ExecuteNonQuery();
-
-                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
-                    {
-                    } 
                 }
             }
             catch (InvalidOperationException)
@@ -292,7 +288,6 @@ namespace CreditSio.DataAccess
                 {
                     Log.WriteLog("DBInterface : erreur SQL", w);
                 }
-
             }
             finally
             {
