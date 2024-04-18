@@ -104,9 +104,11 @@
     <Compile Include="Models\CompteModel.cs" />
     <Compile Include="Models\ConseillerModel.cs" />
     <Compile Include="Models\EmpruntModel.cs" />
+    <Compile Include="Models\MaterielEmpruntModel.cs" />
     <Compile Include="Models\MaterielModel.cs" />
     <Compile Include="Models\MonopalmeModel.cs" />
     <Compile Include="Models\NageurModel.cs" />
+    <Compile Include="Models\StockModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\Log.cs" />

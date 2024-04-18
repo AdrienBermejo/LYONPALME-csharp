@@ -263,6 +263,67 @@ namespace CreditSio.DataAccess
                 connection.Close();
             }
         }
+
+        public static List<StockModel> GetStock()
+        {
+            //La liste créée est une liste de Compte (et non de CompteCourant ou de CompteEpargne)
+            List<StockModel> stocks = new List<StockModel>();
+            SqlConnection connection = null;
+            //SqlDataReader sqlDataReader = null;
+            try
+            {
+                connection = Connection.getInstance().GetConnection();
+                using (SqlCommand sqlCommand = new SqlCommand("LP_Stock", connection))
+                {
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        while (sqlDataReader.Read())
+                        {
+                            //Si les deux colonnes sont nul ce n'est ni une combinaison ni un monopalme
+                            if (sqlDataReader.IsDBNull(1) && sqlDataReader.IsDBNull(2))
+                            {
+                                StockModel stock = new StockModel();
+                                stock.setMateriel(sqlDataReader.GetString(0));
+                                stock.setQuantite(sqlDataReader.GetInt32(3));
+                                stocks.Add(stock);
+                            }
+                            else if (sqlDataReader.IsDBNull(1)) //c'est un monopalme
+                            {
+                                StockModel stock = new StockModel();
+                                stock.setMateriel(sqlDataReader.GetString(0));
+                                stock.setPointure(sqlDataReader.GetInt32(2));
+                                stock.setQuantite(sqlDataReader.GetInt32(3));
+                                stocks.Add(stock);
+                            }
+                            else //c'est une combinaison
+                            {
+                                StockModel stock = new StockModel();
+                                stock.setMateriel(sqlDataReader.GetString(0));
+                                stock.setTaille_Combi(sqlDataReader.GetString(1));
+                                stock.setQuantite(sqlDataReader.GetInt32(3));
+                                stocks.Add(stock);
+                            }
+                        }
+                    }
+
+                }
+
+            }
+            catch (InvalidOperationException)
+            {
+                using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                {
+                    Log.WriteLog("DBInterface : erreur SQL", w);
+                }
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return stocks;
+        }
     }
 }
 

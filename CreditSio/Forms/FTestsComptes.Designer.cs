@@ -54,6 +54,7 @@ namespace CreditSio.Forms
             this.lvComptes.TabIndex = 0;
             this.lvComptes.UseCompatibleStateImageBehavior = false;
             this.lvComptes.View = System.Windows.Forms.View.Details;
+            this.lvComptes.SelectedIndexChanged += new System.EventHandler(this.lvComptes_SelectedIndexChanged);
             // 
             // TypeCompte
             // 

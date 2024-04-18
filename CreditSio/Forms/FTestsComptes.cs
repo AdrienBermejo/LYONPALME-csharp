@@ -56,5 +56,10 @@ namespace CreditSio.Forms
                 }
             }
         }
+
+        private void lvComptes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
