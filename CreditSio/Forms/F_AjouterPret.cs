@@ -35,7 +35,16 @@ namespace CreditSio.Forms
             numNageur = Input_NumeroNageur.Text;
             etat = Input_EtatPret.Text;
             date = DateTime.MinDate;
-            DBInterface.AddEmprunt(idPret,idMateriel,idMateriel,etat,date);
+            try
+            {
+                // Add the emprunt to the database using DBInterface.AddEmprunt method
+                DBInterface.AddEmprunt(idPret, idMateriel, numNageur, etat, date);
+                MessageBox.Show("Emprunt ajouté avec succès");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error adding emprunt: " + ex.Message);
+            }
         }
 
         private void Input_CodePret_TextChanged(object sender, EventArgs e)
