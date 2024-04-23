@@ -8,11 +8,15 @@ namespace CreditSio.Models
 {
     public class StockModel
     {
+
+        #region composant
         public string Materiel { get; set; }
         public string Taille_Combinaison { get; set; }
         public int Pointure_Monopalme { get; set; }
         public int Quantite { get; set; }
 
+
+        #endregion
         public void setMateriel(string materiel)
         {
             Materiel = materiel;
