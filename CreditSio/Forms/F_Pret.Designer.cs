@@ -34,11 +34,20 @@
             this.TextSupr = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.Numero = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Marque = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Taille = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Pointure = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Nom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Prenom = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DateD = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(26, 195);
+            this.button1.Location = new System.Drawing.Point(280, 361);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(139, 55);
             this.button1.TabIndex = 0;
@@ -94,11 +103,64 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Numero du Pret :";
             // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Numero,
+            this.Marque,
+            this.Type,
+            this.Taille,
+            this.Pointure,
+            this.Nom,
+            this.Prenom,
+            this.DateD});
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(26, 12);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(746, 234);
+            this.listView1.TabIndex = 6;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // Numero
+            // 
+            this.Numero.Text = "Numero Materiel";
+            // 
+            // Marque
+            // 
+            this.Marque.Text = "Marque";
+            // 
+            // Type
+            // 
+            this.Type.Text = "Type";
+            // 
+            // Taille
+            // 
+            this.Taille.Text = "Taille";
+            // 
+            // Pointure
+            // 
+            this.Pointure.Text = "Pointure";
+            // 
+            // Nom
+            // 
+            this.Nom.Text = "Nom";
+            // 
+            // Prenom
+            // 
+            this.Prenom.Text = "Prenom";
+            // 
+            // DateD
+            // 
+            this.DateD.Text = "DateDebut";
+            // 
             // F_Pret
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TextSupr);
@@ -109,6 +171,7 @@
             this.Text = "F_AjoutPret";
             this.ResumeLayout(false);
             this.PerformLayout();
+            this.Load += new System.EventHandler(this.listView1_SelectedIndexChanged);
 
         }
 
@@ -120,5 +183,14 @@
         private System.Windows.Forms.Label TextSupr;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader Numero;
+        private System.Windows.Forms.ColumnHeader Marque;
+        private System.Windows.Forms.ColumnHeader Type;
+        private System.Windows.Forms.ColumnHeader Taille;
+        private System.Windows.Forms.ColumnHeader Pointure;
+        private System.Windows.Forms.ColumnHeader Nom;
+        private System.Windows.Forms.ColumnHeader Prenom;
+        private System.Windows.Forms.ColumnHeader DateD;
     }
 }

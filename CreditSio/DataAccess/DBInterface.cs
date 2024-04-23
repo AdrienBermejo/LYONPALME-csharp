@@ -324,6 +324,79 @@ namespace CreditSio.DataAccess
             }
             return stocks;
         }
+
+        public static List<MaterielEmpruntModel> GetPret()
+        {
+            //La liste créée est une liste de Compte (et non de CompteCourant ou de CompteEpargne)
+            List<MaterielEmpruntModel> EmpruntMats = new List<MaterielEmpruntModel>();
+            SqlConnection connection = null;
+            //SqlDataReader sqlDataReader = null;
+            try
+            {
+                connection = Connection.getInstance().GetConnection();
+                using (SqlCommand sqlCommand = new SqlCommand("LP_MaterielEmprunt", connection))
+                {
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        while (sqlDataReader.Read())
+                        {
+                            //Si les deux colonnes sont nul ce n'est ni une combinaison ni un monopalme
+                            if (sqlDataReader.IsDBNull(3) && sqlDataReader.IsDBNull(4))
+                            {
+                                MaterielEmpruntModel mat = new MaterielEmpruntModel();
+                                mat.setMateriel(sqlDataReader.GetString(0));
+                                mat.setMarque(sqlDataReader.GetString(1));
+                                mat.setType(sqlDataReader.GetString(2));
+                                mat.setNom(sqlDataReader.GetString(5));
+                                mat.setPrenom(sqlDataReader.GetString(6));
+                                mat.setDate(sqlDataReader.GetDateTime(7));
+                                EmpruntMats.Add(mat);
+                            }
+                            else if (sqlDataReader.IsDBNull(3)) //c'est un monopalme
+                            {
+                                MaterielEmpruntModel mat = new MaterielEmpruntModel();
+                                mat.setMateriel(sqlDataReader.GetString(0));
+                                mat.setMarque(sqlDataReader.GetString(1));
+                                mat.setType(sqlDataReader.GetString(2));
+                                mat.setPointure(sqlDataReader.GetInt32(4));
+                                mat.setNom(sqlDataReader.GetString(5));
+                                mat.setPrenom(sqlDataReader.GetString(6));
+                                mat.setDate(sqlDataReader.GetDateTime(7));
+                                EmpruntMats.Add(mat);
+                            }
+                            else //c'est une combinaison
+                            {
+                                MaterielEmpruntModel mat = new MaterielEmpruntModel();
+                                mat.setMateriel(sqlDataReader.GetString(0));
+                                mat.setMarque(sqlDataReader.GetString(1));
+                                mat.setType(sqlDataReader.GetString(2));
+                                mat.setTaille(sqlDataReader.GetString(3));
+                                mat.setNom(sqlDataReader.GetString(5));
+                                mat.setPrenom(sqlDataReader.GetString(6));
+                                mat.setDate(sqlDataReader.GetDateTime(7));
+                                EmpruntMats.Add(mat);
+                            }
+                        }
+                    }
+
+                }
+
+            }
+            catch (InvalidOperationException)
+            {
+                using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                {
+                    Log.WriteLog("DBInterface : erreur SQL", w);
+                }
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return EmpruntMats;
+        }
     }
 }
 
