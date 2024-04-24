@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -70,6 +71,23 @@ namespace CreditSio.Forms
         private void Input_EtatPret_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<IdModel> ID = DBInterface.GetLastPret();
+
+            if (ID != null)
+            {
+
+                foreach (IdModel stock in ID)
+                {
+                    string[] row = { stock.Id };
+                    ListViewItem listviewitem = new ListViewItem(row);
+
+                    dStock.Items.Add(listviewitem);
+                }
+            }
         }
     }
 }

@@ -241,7 +241,6 @@ namespace CreditSio.DataAccess
                     sqlCommand.Parameters.AddWithValue("@codeMateriel", SqlDbType.VarChar).Value = idMateriel;
                     sqlCommand.Parameters.AddWithValue("@numNageur", SqlDbType.VarChar).Value = idNageur;
                     sqlCommand.Parameters.AddWithValue("@etatMateriel", SqlDbType.VarChar).Value = etat;
-                    sqlCommand.Parameters.AddWithValue("@dateFin", SqlDbType.Date).Value = date;
                     sqlCommand.Parameters.AddWithValue("@dateDebut", SqlDbType.Date).Value = date;
                     /// tentative d'extraction d'erreur :
                     //Console.WriteLine("erreur");
@@ -323,6 +322,49 @@ namespace CreditSio.DataAccess
                 connection.Close();
             }
             return stocks;
+        }
+
+        public static List<IdModel> GetLastPret()
+        {
+            //La liste créée est une liste de Compte (et non de CompteCourant ou de CompteEpargne)
+            List<IdModel> id = new List<IdModel>();
+            SqlConnection connection = null;
+            //SqlDataReader sqlDataReader = null;
+            try
+            {
+                connection = Connection.getInstance().GetConnection();
+                using (SqlCommand sqlCommand = new SqlCommand("LP_LastPretId", connection))
+                {
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        while (sqlDataReader.Read())
+                        {
+                            IdModel dId = new IdModel();
+                            dId.setId(sqlDataReader.GetString(0));
+                            id.Add(dId);
+                            //Si les deux colonnes sont nul ce n'est ni une combinaison ni un monopalme
+                           
+                        }
+                       
+                    }
+
+                }
+
+            }
+            catch (InvalidOperationException)
+            {
+                using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                {
+                    Log.WriteLog("DBInterface : erreur SQL", w);
+                }
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return id;
         }
 
         public static List<MaterielEmpruntModel> GetPret()

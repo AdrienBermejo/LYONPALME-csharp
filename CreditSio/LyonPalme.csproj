@@ -104,6 +104,7 @@
     <Compile Include="Models\CompteModel.cs" />
     <Compile Include="Models\ConseillerModel.cs" />
     <Compile Include="Models\EmpruntModel.cs" />
+    <Compile Include="Models\IdModel.cs" />
     <Compile Include="Models\MaterielEmpruntModel.cs" />
     <Compile Include="Models\MaterielModel.cs" />
     <Compile Include="Models\MonopalmeModel.cs" />

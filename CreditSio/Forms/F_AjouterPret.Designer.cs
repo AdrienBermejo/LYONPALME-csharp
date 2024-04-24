@@ -39,6 +39,8 @@
             this.Input_CodeMateriel = new System.Windows.Forms.TextBox();
             this.Input_NumeroNageur = new System.Windows.Forms.TextBox();
             this.Input_CodePret = new System.Windows.Forms.TextBox();
+            this.dStock = new System.Windows.Forms.ListView();
+            this.IDMat = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label1
@@ -137,11 +139,30 @@
             this.Input_CodePret.TabIndex = 10;
             this.Input_CodePret.TextChanged += new System.EventHandler(this.Input_CodePret_TextChanged);
             // 
+            // dStock
+            // 
+            this.dStock.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.IDMat});
+            this.dStock.HideSelection = false;
+            this.dStock.Location = new System.Drawing.Point(547, 62);
+            this.dStock.Name = "dStock";
+            this.dStock.Size = new System.Drawing.Size(207, 118);
+            this.dStock.TabIndex = 11;
+            this.dStock.UseCompatibleStateImageBehavior = false;
+            this.dStock.View = System.Windows.Forms.View.Details;
+            this.dStock.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // IDMat
+            // 
+            this.IDMat.Text = "Dernier ID utilisé";
+            this.IDMat.Width = 211;
+            // 
             // F_AjouterPret
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dStock);
             this.Controls.Add(this.Input_CodePret);
             this.Controls.Add(this.Input_NumeroNageur);
             this.Controls.Add(this.Input_CodeMateriel);
@@ -155,6 +176,7 @@
             this.Controls.Add(this.label1);
             this.Name = "F_AjouterPret";
             this.Text = "F_Pret";
+            this.Load += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +195,7 @@
         private System.Windows.Forms.TextBox Input_CodeMateriel;
         private System.Windows.Forms.TextBox Input_NumeroNageur;
         private System.Windows.Forms.TextBox Input_CodePret;
+        private System.Windows.Forms.ListView dStock;
+        private System.Windows.Forms.ColumnHeader IDMat;
     }
 }
