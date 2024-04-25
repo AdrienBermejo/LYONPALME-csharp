@@ -37,6 +37,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dMat = new System.Windows.Forms.ListView();
+            this.Materiel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // textBox3
@@ -117,11 +124,78 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Etat";
             // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(523, 245);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(170, 26);
+            this.textBox5.TabIndex = 9;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(523, 307);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(170, 26);
+            this.textBox6.TabIndex = 10;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(433, 250);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 20);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Pointure";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(433, 310);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 20);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Taille";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(437, 193);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(312, 20);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "si c\'est un monopalme ou une combinaison";
+            // 
+            // dMat
+            // 
+            this.dMat.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Materiel});
+            this.dMat.HideSelection = false;
+            this.dMat.Location = new System.Drawing.Point(523, 51);
+            this.dMat.Name = "dMat";
+            this.dMat.Size = new System.Drawing.Size(170, 97);
+            this.dMat.TabIndex = 14;
+            this.dMat.UseCompatibleStateImageBehavior = false;
+            this.dMat.View = System.Windows.Forms.View.Details;
+            this.dMat.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // Materiel
+            // 
+            this.Materiel.Text = "Dernier Materiel id";
+            this.Materiel.Width = 143;
+            // 
             // F_AjoutMateriel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dMat);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -133,6 +207,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "F_AjoutMateriel";
             this.Text = "F_AjoutMateriel";
+            this.Load += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,5 +224,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ListView dMat;
+        private System.Windows.Forms.ColumnHeader Materiel;
     }
 }

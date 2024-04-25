@@ -51,5 +51,32 @@ namespace CreditSio.Forms
                 }
             }
         }
+
+        private void NumPret_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SuprPret_Click(object sender, EventArgs e)
+        {
+            string idPret;
+
+            idPret = NumPret.Text;
+            try
+            {
+                // Add the emprunt to the database using DBInterface.AddEmprunt method
+                DBInterface.SuprimerPret(idPret);
+                MessageBox.Show("Emprunt ajouté avec succès");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error adding emprunt: " + ex.Message);
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

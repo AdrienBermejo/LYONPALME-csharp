@@ -228,6 +228,109 @@ namespace CreditSio.DataAccess
                 connection.Close();
             }
         }
+
+        public static void AddMonopalmeStock(MonopalmeModel materiel)
+        {
+            SqlConnection connection = null;
+            try
+            {
+                connection = Connection.getInstance().GetConnection();
+                using (SqlCommand sqlCommand = new SqlCommand("LP_AjoutMonopalme", connection))
+                {
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.Parameters.AddWithValue("@codeMateriel", SqlDbType.VarChar).Value = materiel.IdMateriel;
+                    sqlCommand.Parameters.AddWithValue("@marque", SqlDbType.VarChar).Value = materiel.Marque;
+                    sqlCommand.Parameters.AddWithValue("@libelle", SqlDbType.VarChar).Value = materiel.Libelle;
+                    sqlCommand.Parameters.AddWithValue("@etatMateriel", SqlDbType.VarChar).Value = materiel.Etat;
+                    sqlCommand.Parameters.AddWithValue("@taille", SqlDbType.VarChar).Value = materiel.Pointure;
+
+                    /// tentative d'extraction d'erreur :
+                    //Console.WriteLine("erreur");
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                    }
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                {
+                    Log.WriteLog("DBInterface : erreur SQL", w);
+                }
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public static void AddCombinaisonStock(CombinaisonModel materiel)
+        {
+            SqlConnection connection = null;
+            try
+            {
+                connection = Connection.getInstance().GetConnection();
+                using (SqlCommand sqlCommand = new SqlCommand("LP_AjoutCombinaison", connection))
+                {
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.Parameters.AddWithValue("@codeMateriel", SqlDbType.VarChar).Value = materiel.IdMateriel;
+                    sqlCommand.Parameters.AddWithValue("@marque", SqlDbType.VarChar).Value = materiel.Marque;
+                    sqlCommand.Parameters.AddWithValue("@libelle", SqlDbType.VarChar).Value = materiel.Libelle;
+                    sqlCommand.Parameters.AddWithValue("@etatMateriel", SqlDbType.VarChar).Value = materiel.Etat;
+                    sqlCommand.Parameters.AddWithValue("@taille", SqlDbType.VarChar).Value = materiel.Taille;
+
+                    /// tentative d'extraction d'erreur :
+                    //Console.WriteLine("erreur");
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                    }
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                {
+                    Log.WriteLog("DBInterface : erreur SQL", w);
+                }
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public static void SuprimerPret(string id)
+        {
+            SqlConnection connection = null;
+            try
+            {
+                connection = Connection.getInstance().GetConnection();
+                using (SqlCommand sqlCommand = new SqlCommand("LP_SuprimerPret", connection))
+                {
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.Parameters.AddWithValue("@id", SqlDbType.VarChar).Value = id;
+                    /// tentative d'extraction d'erreur :
+                    //Console.WriteLine("erreur");
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                    }
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                {
+                    Log.WriteLog("DBInterface : erreur SQL", w);
+                }
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
         public static void AddEmprunt(string idEmprunt,string idMateriel, string idNageur, string etat, DateTime date)
         {
             SqlConnection connection = null;
@@ -347,6 +450,49 @@ namespace CreditSio.DataAccess
                            
                         }
                        
+                    }
+
+                }
+
+            }
+            catch (InvalidOperationException)
+            {
+                using (StreamWriter w = File.AppendText("../Logs/logerror.txt"))
+                {
+                    Log.WriteLog("DBInterface : erreur SQL", w);
+                }
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return id;
+        }
+
+        public static List<IdModel> GetLastMateriel()
+        {
+            //La liste créée est une liste de Compte (et non de CompteCourant ou de CompteEpargne)
+            List<IdModel> id = new List<IdModel>();
+            SqlConnection connection = null;
+            //SqlDataReader sqlDataReader = null;
+            try
+            {
+                connection = Connection.getInstance().GetConnection();
+                using (SqlCommand sqlCommand = new SqlCommand("LP_LastIdMat", connection))
+                {
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
+                    {
+                        while (sqlDataReader.Read())
+                        {
+                            IdModel dId = new IdModel();
+                            dId.setId(sqlDataReader.GetString(0));
+                            id.Add(dId);
+                            //Si les deux colonnes sont nul ce n'est ni une combinaison ni un monopalme
+
+                        }
+
                     }
 
                 }

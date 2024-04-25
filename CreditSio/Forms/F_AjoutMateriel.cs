@@ -1,6 +1,7 @@
 ﻿using CreditSio.DataAccess;
 using CreditSio.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,20 +38,63 @@ namespace CreditSio.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             // appel la dbinterface et lui fournis les données des text box
-            string idMateriel, marque, libelle, etat;
+            string idMateriel, marque, libelle, etat, pointure, taille;
             
             idMateriel = textBox4.Text;
             marque = textBox1.Text;
             libelle = textBox2.Text;
             etat = textBox3.Text;
-            MaterielModel materiel = new MaterielModel(idMateriel,marque,libelle,etat);
-
-            DBInterface.AddMaterielStock(materiel);
+            pointure = textBox5.Text; //pointure
+            taille = textBox6.Text; //taille
+            
+            if (pointure is null && taille is null)
+            {
+                MaterielModel materiel = new MaterielModel(idMateriel, marque, libelle, etat);
+                DBInterface.AddMaterielStock(materiel);
+            }
+            else if(pointure is null)
+            {
+                CombinaisonModel materiel = new CombinaisonModel(idMateriel, marque, libelle, etat, taille);
+                DBInterface.AddCombinaisonStock(materiel);
+            }
+            else if(taille is null)
+            {
+                MonopalmeModel materiel = new MonopalmeModel(idMateriel, marque, libelle, etat, pointure);
+                DBInterface.AddMonopalmeStock(materiel);
+            }
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<IdModel> ID = DBInterface.GetLastMateriel();
+
+            if (ID != null)
+            {
+
+                foreach (IdModel stock in ID)
+                {
+                    string[] row = { stock.Id };
+                    ListViewItem listviewitem = new ListViewItem(row);
+
+                    dMat.Items.Add(listviewitem);
+                }
+            }
         }
     }
 }

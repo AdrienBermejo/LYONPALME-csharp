@@ -61,6 +61,7 @@
             this.NumPret.Name = "NumPret";
             this.NumPret.Size = new System.Drawing.Size(125, 26);
             this.NumPret.TabIndex = 1;
+            this.NumPret.TextChanged += new System.EventHandler(this.NumPret_TextChanged);
             // 
             // SuprPret
             // 
@@ -70,6 +71,7 @@
             this.SuprPret.TabIndex = 2;
             this.SuprPret.Text = "Suprimer un Pret";
             this.SuprPret.UseVisualStyleBackColor = true;
+            this.SuprPret.Click += new System.EventHandler(this.SuprPret_Click);
             // 
             // TextSupr
             // 
@@ -97,11 +99,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(46, 327);
+            this.label2.Location = new System.Drawing.Point(34, 327);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 20);
+            this.label2.Size = new System.Drawing.Size(155, 20);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Numero du Pret :";
+            this.label2.Text = "Numero du Materiel :";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // listView1
             // 
@@ -115,9 +118,9 @@
             this.Prenom,
             this.DateD});
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(26, 12);
+            this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(746, 234);
+            this.listView1.Size = new System.Drawing.Size(776, 234);
             this.listView1.TabIndex = 6;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -130,30 +133,37 @@
             // Marque
             // 
             this.Marque.Text = "Marque";
+            this.Marque.Width = 69;
             // 
             // Type
             // 
             this.Type.Text = "Type";
+            this.Type.Width = 66;
             // 
             // Taille
             // 
             this.Taille.Text = "Taille";
+            this.Taille.Width = 49;
             // 
             // Pointure
             // 
             this.Pointure.Text = "Pointure";
+            this.Pointure.Width = 65;
             // 
             // Nom
             // 
             this.Nom.Text = "Nom";
+            this.Nom.Width = 76;
             // 
             // Prenom
             // 
             this.Prenom.Text = "Prenom";
+            this.Prenom.Width = 72;
             // 
             // DateD
             // 
             this.DateD.Text = "DateDebut";
+            this.DateD.Width = 75;
             // 
             // F_Pret
             // 
@@ -169,9 +179,9 @@
             this.Controls.Add(this.button1);
             this.Name = "F_Pret";
             this.Text = "F_AjoutPret";
+            this.Load += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.Load += new System.EventHandler(this.listView1_SelectedIndexChanged);
 
         }
 
