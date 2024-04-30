@@ -101,7 +101,7 @@ namespace CreditSio.Forms
             this.btnVoirComptes.Name = "btnVoirComptes";
             this.btnVoirComptes.Size = new System.Drawing.Size(193, 48);
             this.btnVoirComptes.TabIndex = 2;
-            this.btnVoirComptes.Text = "Voir les comptes";
+            this.btnVoirComptes.Text = "Lancer L\'application";
             this.btnVoirComptes.UseVisualStyleBackColor = true;
             this.btnVoirComptes.Visible = false;
             this.btnVoirComptes.Click += new System.EventHandler(this.btnVoirComptes_Click);
