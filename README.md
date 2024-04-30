@@ -1,7 +1,6 @@
 ![logo](https://media.discordapp.net/attachments/1019490902319829013/1234841481089646592/LP.png?ex=6632333f&is=6630e1bf&hm=ea543435f6e670bac662590d66898ea28d0a760ff0d6f34ebeb6f1f672ce45f2&=&format=webp&quality=lossless&width=1440&height=429)
 Lyonpalme, est application c# qui cherche a créer des materiels, ajouter des prêts, visualisation de prêts, visualisation des stock de matériel ainsi que fin de prêt.
 #
-voici le schema de la base de donnée, avec les tables, ainsi que les collones de chacunes d'elles.
 
 # prérequi
 
@@ -33,6 +32,8 @@ voici le code du appconfig :
 |     1| C#        |
 |     2| SQL       |
 
+
+voici le schema de la base de donnée, avec les tables, ainsi que les collones de chacunes d'elles.
 
 ![schema base de données](https://media.discordapp.net/attachments/1019490902319829013/1220746820112613446/image.png?ex=6631ae52&is=66305cd2&hm=6e80406e3747b7f79a32e8320e6fb62e08b873a321bacbe8f456297f71f92873&=&format=webp&quality=lossless&width=825&height=700)
 
